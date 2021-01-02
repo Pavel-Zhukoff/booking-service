@@ -79,6 +79,7 @@ $app->configure('app');
 $app->routeMiddleware([
     'checkidisnumeric' => App\Http\Middleware\CheckIdIsNumeric::class,
     'checkidexists' => App\Http\Middleware\CheckIdExists::class,
+    'validaterooms' => App\Http\Middleware\ValidateRooms::class,
 ]);
 
 /*
