@@ -14,11 +14,10 @@ class CheckIdIsNumeric
      *
      * @param Request $request
      * @param Closure $next
-     * @param int $index
      * @return \Illuminate\Http\JsonResponse|mixed
      */
-    public function handle(Request $request, Closure $next, int $index) {
-        $id = $request->segment($index);
+    public function handle(Request $request, Closure $next) {
+        $id = $request->route('id');
         if (!is_numeric($id) && strpos($id, '.') !== false)
         {
             return response()->json(['error' => 'ID должен быть целым числом!'], 400);

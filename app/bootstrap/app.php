@@ -23,7 +23,7 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-// $app->withFacades();
+$app->withFacades();
 
 // $app->withEloquent();
 
@@ -78,6 +78,7 @@ $app->configure('app');
 
 $app->routeMiddleware([
     'checkidisnumeric' => App\Http\Middleware\CheckIdIsNumeric::class,
+    'checkidexists' => App\Http\Middleware\CheckIdExists::class,
 ]);
 
 /*
