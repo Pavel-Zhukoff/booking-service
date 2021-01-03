@@ -23,7 +23,7 @@ class ValidateRooms
             case 'create':
                 $rules = [
                     'desc' => 'required',
-                    'price' => 'required|numeric|gte:0',
+                    'price' => 'required|numeric|gte:0|lt:1000000',
                 ];
                 break;
             case 'update':
@@ -39,6 +39,7 @@ class ValidateRooms
             'price.required' => 'Поле price обязательно к заполнению!',
             'price.numeric' => 'Поле price должно быть числом!',
             'price.gte' => 'Поле price должно быть положительным!',
+            'price.lt' => 'Поле price должно быть меньше чем 1000000!',
         ]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 400);
