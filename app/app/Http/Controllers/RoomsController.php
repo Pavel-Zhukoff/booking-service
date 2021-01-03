@@ -14,12 +14,10 @@ class RoomsController extends Controller
     public function __construct()
     {
         $this->middleware('checkidisnumeric', ['only' => [
-            'showById',
             'delete',
         ]]);
 
         $this->middleware('checkidexists:rooms', ['only' => [
-            'showById',
             'delete',
         ]]);
 
@@ -40,18 +38,6 @@ class RoomsController extends Controller
     public function showAll()
     {
         $result = DB::table('rooms')->get();
-        return response()->json($result);
-    }
-
-    /**
-     * Return room with id=$id
-     *
-     * @param int $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function showById(int $id)
-    {
-        $result = DB::table('rooms')->find($id);
         return response()->json($result);
     }
 
