@@ -15,22 +15,16 @@ class RoomsController extends Controller
     {
         $this->middleware('checkidisnumeric', ['only' => [
             'showById',
-            'update',
             'delete',
         ]]);
 
         $this->middleware('checkidexists:rooms', ['only' => [
             'showById',
-            'update',
             'delete',
         ]]);
 
-        $this->middleware('validaterooms:create', ['only' => [
+        $this->middleware('validaterooms', ['only' => [
             'create',
-        ]]);
-
-        $this->middleware('validaterooms:update', ['only' => [
-            'update',
         ]]);
 
         $this->middleware('checksortingparams', ['only' => [
@@ -41,6 +35,7 @@ class RoomsController extends Controller
     /**
      * Returns all rooms
      *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function showAll()
     {
@@ -105,34 +100,6 @@ class RoomsController extends Controller
         $price = $request->input('price');
         $id = DB::table('rooms')->insertGetId(['description' => $desc, 'price' => $price]);
         return response()->json(['room_id' => $id], 201);
-    }
-
-    /**
-     * Update room with id=$id
-     *
-     * @param Request $request
-     * @param int $id
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
-     */
-    public function update(Request $request, int $id)
-    {
-        $desc = $request->input('desc');
-        $price = $request->input('price');
-        $update = [];
-        if ($desc !== null)
-        {
-            $update += ['description' => $desc];
-        }
-        if ($price !== null)
-        {
-            $update += ['price' => $price];
-        }
-        if (empty($update))
-        {
-            return response('', 204);
-        }
-        DB::table('rooms')->where(['id' => $id])->update($update);
-        return response()->json(['room_id' => $id], 200);
     }
 
     /**

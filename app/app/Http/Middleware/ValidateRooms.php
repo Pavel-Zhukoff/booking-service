@@ -11,30 +11,18 @@ use Illuminate\Support\Facades\Validator;
 class ValidateRooms
 {
     /**
-     * Validate rooms parameters for create and update actions.
+     * Validate rooms parameters for create action.
      *
      * @param Request $request
      * @param Closure $next
-     * @param string $action
      * @return \Illuminate\Http\JsonResponse|mixed
      */
-    public function handle(Request $request, Closure $next, string $action) {
-        switch ($action) {
-            case 'create':
-                $rules = [
-                    'desc' => 'required',
-                    'price' => 'required|numeric|gte:0|lt:1000000',
-                ];
-                break;
-            case 'update':
-                $rules = [
-                    'price' => 'numeric|gte:0'
-                ];
-                break;
-            default:
-                $rules = [];
-        }
-        $validator = Validator::make($request->all(), $rules, [
+    public function handle(Request $request, Closure $next) {
+
+        $validator = Validator::make($request->all(), [
+            'desc' => 'required',
+            'price' => 'required|numeric|gte:0|lt:1000000',
+        ], [
             'desc.required' => 'Поле desс обязательно к заполнению!',
             'price.required' => 'Поле price обязательно к заполнению!',
             'price.numeric' => 'Поле price должно быть числом!',
