@@ -16,7 +16,7 @@
 $router->group(['prefix' => 'rooms'], function () use ($router) {
     $router->get('/', 'RoomsController@showAll');
     $router->get('/{id}', 'RoomsController@showById');
-    $router->get('/sort/{fields}', 'RoomsController@sortBy');
+    $router->get('/sort', 'RoomsController@sortBy');
     $router->delete('/{id}', 'RoomsController@delete');
     $router->patch('/{id}', 'RoomsController@update');
     $router->post('/', 'RoomsController@create');
