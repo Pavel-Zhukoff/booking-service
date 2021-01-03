@@ -14,9 +14,16 @@
 */
 
 $router->group(['prefix' => 'rooms'], function () use ($router) {
-    $router->get('/', 'RoomsController@showAll');
-    $router->get('/{id}', 'RoomsController@showById');
     $router->get('/sort', 'RoomsController@sortBy');
+    $router->get('/{id}', 'RoomsController@showById');
     $router->delete('/{id}', 'RoomsController@delete');
+    $router->get('/', 'RoomsController@showAll');
     $router->post('/', 'RoomsController@create');
+});
+
+$router->group(['prefix' => 'reserves'], function () use ($router) {
+    $router->get('/room/{id}', 'ReservationsController@showByRoomId');
+    $router->delete('/{id}', 'ReservationsController@delete');
+    $router->get('/', 'ReservationsController@showAll');
+    $router->post('/', 'ReservationsController@create');
 });

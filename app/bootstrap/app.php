@@ -81,6 +81,7 @@ $app->routeMiddleware([
     'checkidexists' => App\Http\Middleware\CheckIdExists::class,
     'validaterooms' => App\Http\Middleware\ValidateRooms::class,
     'checksortingparams' => App\Http\Middleware\CheckSortingParams::class,
+    'validatereservations' => App\Http\Middleware\ValidateReservations::class,
 ]);
 
 /*
