@@ -80,6 +80,7 @@ $app->routeMiddleware([
     'checkidisnumeric' => App\Http\Middleware\CheckIdIsNumeric::class,
     'checkidexists' => App\Http\Middleware\CheckIdExists::class,
     'validaterooms' => App\Http\Middleware\ValidateRooms::class,
+    'checksortingparams' => App\Http\Middleware\CheckSortingParams::class,
 ]);
 
 /*
