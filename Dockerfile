@@ -17,3 +17,4 @@ USER 1000
 WORKDIR /var/www
 
 ADD ./app ./
+RUN composer install
