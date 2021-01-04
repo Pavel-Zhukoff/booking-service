@@ -2,4 +2,4 @@ composer.phar
 .idea/
 *.env
 log/
-mysql/
+db/

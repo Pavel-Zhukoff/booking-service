@@ -1,0 +1,29 @@
+version: '3'
+services:
+  booking-service:
+    container_name: booking-service
+    build: .
+    restart: always
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app:/var/www
+    command: ["php", "-S", "0.0.0.0:8000", "-t", "public"]
+    networks:
+      - db_network
+    depends_on:
+      - db
+  db:
+    image: postgres:alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=avito
+      - POSTGRES_USER=avito
+      - POSTGRES_PASSWORD=avito
+    networks:
+      - db_network
+    volumes:
+      - ./db:/var/lib/postgresql/data
+networks:
+  db_network:
+    driver: bridge
