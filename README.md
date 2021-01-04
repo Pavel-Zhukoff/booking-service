@@ -10,7 +10,7 @@
 1. Открыть терминал
 1. Ввести команду:
 `docker-compose up -d --build`
-1. Далее ввести: `docker-compose exec booking-service composer install && php artisan migrate:fresh` чтобы подгрузить зависимости и сделать необходимые миграции базы данных.
+1. Далее ввести: `docker-compose exec booking-service composer install ` и `docker-compose exec booking-service php artisan migrate:fresh` чтобы подгрузить зависимости и сделать необходимые миграции базы данных.
 1. Сервис будет запущен на `localhost:8000`
 ## Основные обработчики
 
@@ -83,3 +83,6 @@
 Пример ошибки при создании комнаты:
 
 ![Пример ошибки 1](https://sun9-62.userapi.com/impg/_IyawrJn-5wQbw4XdIp2JMXDE0pJrgdl6EJWRg/YHOpWFdsOts.jpg?size=502x443&quality=96&proxy=1&sign=531840efc9577deab72b759379382609&type=album)
+
+## Вопросы
+1. Есть ли какой-то способ сохранить в конечном контейнере, т.е. если я выполняю `RUN composer install` в докер-файле, папка vendor не остается 
