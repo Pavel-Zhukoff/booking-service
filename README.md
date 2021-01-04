@@ -10,6 +10,7 @@
 1. Открыть терминал
 1. Ввести команду:
 `docker-compose up -d --build`
+1. Далее ввести: `docker-compose exec booking-service php artisan migrate:fresh` чтобы сделать необзодимые миграции базы данных.
 1. Сервис будет запущен на `localhost:8000`
 ## Основные обработчики
 
