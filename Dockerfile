@@ -15,4 +15,3 @@ RUN wget https://getcomposer.org/installer -O - -q \
 WORKDIR /var/www
 
 ADD ./app ./
-RUN composer install
